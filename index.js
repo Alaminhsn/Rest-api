@@ -1,6 +1,7 @@
 const express = require("express");
 
 const app = express();
+const connectDB = require("./db/connection")
 
 const  PORT = process.env.PORT  ||  3000;
  
@@ -14,12 +15,13 @@ app.use("/api/products",products_routes);
 
 const handle = async() =>{
     try{
+        await connectDB();
         app.listen(PORT,()=>{
             console.log(`${PORT} is running in the localhost`);
         });
     }
     catch(error){
-        console.log("Error");
+        console.error(error);
     }
 };
 

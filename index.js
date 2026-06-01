@@ -1,5 +1,6 @@
-const express = require("express");
 require("dotenv").config();
+const express = require("express");
+
 
 const app = express();
 const connectDB = require("./db/connection")
@@ -16,7 +17,7 @@ app.use("/api/products",products_routes);
 
 const handle = async() =>{
     try{
-        await connectDB(process.env.MONGODB_URL);
+        await connectDB(process.env.MONGODB_URI);
         app.listen(PORT,()=>{
             console.log(`${PORT} is running in the localhost`);
         });

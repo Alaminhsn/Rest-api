@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
-const uri = "mongodb+srv://alamin:12345@rest-api.cdnmu0n.mongodb.net/rest-api";
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(uri);
+        const conn = await mongoose.connect(process.env.MONGODB_URI);
         console.log("MongoDB connected successfully");
         return conn;
     } catch (error) {
